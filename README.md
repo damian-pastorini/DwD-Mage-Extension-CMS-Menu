@@ -42,4 +42,4 @@ Administrator Password: demo123
 ##Support
 
 For support, contact us at <a href="mailto:info@dwdeveloper.com">info@dwdeveloper.com</a>
-You can also get the extension from our GitHub <a href="https://github.com/damian-pastorini/DwD-Mage-Extension-CMS-Menu" target="_blank">repository (clik here)</a>.
+
