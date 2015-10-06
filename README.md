@@ -29,6 +29,14 @@ Did you ever try to include a CMS page in the top menu? There's nothing easy abo
 
 Magento 1.8 to 1.9.x.
 
-## Support
+## Extension Demo
 
-For support, contact us at info@dwdeveloper.com
+URL: <a href="http://cms-menu.dwdeveloper.com/">http://cms-menu.dwdeveloper.com/</a>
+Admin URL: <a href="http://cms-menu.dwdeveloper.com/admin">http://cms-menu.dwdeveloper.com/admin</a>
+Administrator User: demo.admin
+Administrator Password: demo123
+
+##Support
+
+For support, contact us at <a href="mailto:info@dwdeveloper.com">info@dwdeveloper.com</a>
+You can also get the extension from our GitHub <a href="https://github.com/damian-pastorini/DwD-Mage-Extension-CMS-Menu" target="_blank">repository (clik here)</a>.
