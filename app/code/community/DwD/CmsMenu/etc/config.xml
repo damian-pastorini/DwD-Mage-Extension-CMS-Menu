@@ -12,7 +12,7 @@
 <config>
     <modules>
         <DwD_CmsMenu>
-            <version>0.1.1</version>
+            <version>0.1.2</version>
         </DwD_CmsMenu>
     </modules>
     <global>
@@ -33,6 +33,26 @@
                 <class>DwD_CmsMenu_Model_Resource</class>
             </dwd_cmsmenu_resource>
         </models>
+        <resources>
+            <cmsmenu_setup>
+                <setup>
+                    <module>DwD_CmsMenu</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </cmsmenu_setup>
+            <cmsmenu_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </cmsmenu_write>
+            <cmsmenu_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </cmsmenu_read>
+        </resources>
         <blocks>
             <dwd_cmsmenu>
                 <class>DwD_CmsMenu_Block</class>
@@ -40,7 +60,7 @@
         </blocks>
         <helpers>
             <dwd_cmsmenu>
-                <class>DwD_Cmsmenu_Helper</class>
+                <class>DwD_CmsMenu_Helper</class>
             </dwd_cmsmenu>
         </helpers>
         <events>
@@ -66,7 +86,7 @@
             <page_block_html_topmenu_gethtml_before>
                 <observers>
                     <dwd_cmsmenu_front>
-                        <class>DwD_Cmsmenu_Block_Page_Html_Topmenu_Observer</class>
+                        <class>DwD_CmsMenu_Block_Page_Html_Topmenu_Observer</class>
                         <method>addMenuItems</method>
                     </dwd_cmsmenu_front>
                 </observers>
@@ -79,7 +99,7 @@
                 <observers>
                     <flexishore_cms_prepare_form>
                         <type>singleton</type>
-                        <class>DwD_Cmsmenu_Block_Adminhtml_Cms_Page_Edit_Tab_Content</class>
+                        <class>DwD_CmsMenu_Block_Adminhtml_Cms_Page_Edit_Tab_Content</class>
                         <method>prepareForm</method>
                     </flexishore_cms_prepare_form>
                 </observers>
