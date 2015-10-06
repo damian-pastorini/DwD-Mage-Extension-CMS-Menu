@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * DwD-CmsMenu - Magento Extension
+ *
+ * @copyright Copyright (c) 2015 DwDesigner Inc. (http://www.dwdeveloper.com/)
+ * @author Damian A. Pastorini - damian.pastorini@dwdeveloper.com
+ *
+ */
+-->
+<config>
+    <modules>
+        <DwD_CmsMenu>
+            <active>true</active>
+            <codePool>community</codePool>
+        </DwD_CmsMenu>
+    </modules>
+</config>

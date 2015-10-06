@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * DwD-CmsMenu - Magento Extension
+ *
+ * @copyright Copyright (c) 2015 DwDesigner Inc. (http://www.dwdeveloper.com/)
+ * @author Damian A. Pastorini - damian.pastorini@dwdeveloper.com
+ *
+ */
+-->
+<config>
+    <modules>
+        <DwD_CmsMenu>
+            <version>0.1.1</version>
+        </DwD_CmsMenu>
+    </modules>
+    <global>
+        <models>
+            <dwd_cmsmenu>
+                <class>DwD_CmsMenu_Model</class>
+                <resourceModel>dwd_cmsmenu_mysql4</resourceModel>
+            </dwd_cmsmenu>
+            <dwd_cmsmenu_mysql4>
+                <class>DwD_CmsMenu_Model_Mysql4</class>
+                <entities>
+                    <cmsmenu>
+                        <table>cmsmenu</table>
+                    </cmsmenu>
+                </entities>
+            </dwd_cmsmenu_mysql4>
+            <dwd_cmsmenu_resource>
+                <class>DwD_CmsMenu_Model_Resource</class>
+            </dwd_cmsmenu_resource>
+        </models>
+        <blocks>
+            <dwd_cmsmenu>
+                <class>DwD_CmsMenu_Block</class>
+            </dwd_cmsmenu>
+        </blocks>
+        <helpers>
+            <dwd_cmsmenu>
+                <class>DwD_Cmsmenu_Helper</class>
+            </dwd_cmsmenu>
+        </helpers>
+        <events>
+            <cms_page_load_after>
+                <observers>
+                    <dwd_cmsmenu_add_page_data>
+                        <class>DwD_CmsMenu_Model_Observer</class>
+                        <method>addCmsPageData</method>
+                    </dwd_cmsmenu_add_page_data>
+                </observers>
+            </cms_page_load_after>
+        </events>
+    </global>
+    <default>
+        <dwd_cmsmenu>
+            <general>
+                <enabled>1</enabled>
+            </general>
+        </dwd_cmsmenu>
+    </default>
+    <frontend>
+        <events>
+            <page_block_html_topmenu_gethtml_before>
+                <observers>
+                    <dwd_cmsmenu_front>
+                        <class>DwD_Cmsmenu_Block_Page_Html_Topmenu_Observer</class>
+                        <method>addMenuItems</method>
+                    </dwd_cmsmenu_front>
+                </observers>
+            </page_block_html_topmenu_gethtml_before>
+        </events>
+    </frontend>
+    <adminhtml>
+        <events>
+            <adminhtml_cms_page_edit_tab_main_prepare_form>
+                <observers>
+                    <flexishore_cms_prepare_form>
+                        <type>singleton</type>
+                        <class>DwD_Cmsmenu_Block_Adminhtml_Cms_Page_Edit_Tab_Content</class>
+                        <method>prepareForm</method>
+                    </flexishore_cms_prepare_form>
+                </observers>
+            </adminhtml_cms_page_edit_tab_main_prepare_form>
+            <cms_page_save_after>
+                <observers>
+                    <dwd_cmsmenu_save_cmsmenu>
+                        <class>DwD_CmsMenu_Model_Observer</class>
+                        <method>saveCmsMenu</method>
+                    </dwd_cmsmenu_save_cmsmenu>
+                </observers>
+            </cms_page_save_after>
+        </events>
+    </adminhtml>
+</config>
