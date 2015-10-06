@@ -34,6 +34,10 @@ class DwD_CmsMenu_Model_Observer
             }
             $cmsMenu->setMenuItemTitle($itemTitle);
             $cmsMenu->save();
+            $flushCache = Mage::getStoreConfig('dwd_cmsmenu/general/cache');
+            if($flushCache) {
+                Mage::app()->getCacheInstance()->flush();
+            }
         }
     }
 

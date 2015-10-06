@@ -78,6 +78,7 @@
         <dwd_cmsmenu>
             <general>
                 <enabled>1</enabled>
+                <cache>1</cache>
             </general>
         </dwd_cmsmenu>
     </default>
