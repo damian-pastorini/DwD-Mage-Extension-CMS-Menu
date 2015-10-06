@@ -9,6 +9,7 @@ DwD - CMS Menu allows you to include CMS pages links and set them in any order i
 - Enable / disable each page link in the top navigation.
 - Configure a custom label for each page link in the menu.
 - Set each page order in the menu.
+- Enable / disable the automatic cache flush feature.
 
 ## How this extension will help you?
 
