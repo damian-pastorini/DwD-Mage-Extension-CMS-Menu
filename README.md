@@ -32,8 +32,11 @@ Magento 1.8 to 1.9.x.
 ## Extension Demo
 
 URL: <a href="http://cms-menu.dwdeveloper.com/" target="_blank">http://cms-menu.dwdeveloper.com/</a>
+
 Admin URL: <a href="http://cms-menu.dwdeveloper.com/admin" target="_blank">http://cms-menu.dwdeveloper.com/admin</a>
+
 Administrator User: demo.admin
+
 Administrator Password: demo123
 
 ##Support
