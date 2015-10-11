@@ -1,4 +1,4 @@
-# DwD - Magento Extension - CMS Menu v0.1.2
+# DwD - Magento Extension - CMS Menu
 
 ## About the extension:
 
@@ -44,3 +44,14 @@ Administrator Password: demo123
 
 For support, contact us at <a href="mailto:info@dwdeveloper.com">info@dwdeveloper.com</a>
 
+## Change log
+
+### v0.1.3
+- Fixed sort order to avoid child of not showing up issue.
+- Added categories level and status filters for admin select box.
+- Added setup script to fix old items created.
+
+### v0.1.2
+- Fixed setup scripts.
+- Fixed case issues in configuration.
+- Added automatic cache flush feature.
