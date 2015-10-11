@@ -17,7 +17,11 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
         $isEnabled = Mage::getStoreConfig('dwd_cmsmenu/general/enabled');
         if($isEnabled) {
             // get all items that should be added at the end of the tree:
-            $cmsMenuItems = Mage::getModel('dwd_cmsmenu/cmsmenu')->getCollection()->addActiveFilter()->setChildOfOrder()->setAddBeforeOrder();
+            $cmsMenuItems = Mage::getModel('dwd_cmsmenu/cmsmenu')
+                ->getCollection()
+                ->addActiveFilter()
+                ->setChildOfOrder()
+                ->setAddBeforeOrder();
             // loop items and add to the menu:
             foreach ($cmsMenuItems as $menuItem) {
                 // get item name:
@@ -43,7 +47,13 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
                     // get all child nodes:
                     $allChildNodes = $observer->getMenu()->getAllChildNodes();
                     // look for the parent item:
-                    $parentItem = $allChildNodes[$menuItem->getChildOf()];
+                    $parentItem = false;
+                    // get child of value:
+                    $childOf = $this->formatedItemValue($menuItem->getChildOf());
+                    // look for cmsmenu items:
+                    if(isset($allChildNodes[$childOf])) {
+                        $parentItem = $allChildNodes[$childOf];
+                    }
                     if($parentItem) {
                         // create new item node:
                         $itemNode = new Varien_Data_Tree_Node($itemNodeData, 'cmsmenu-'.$menuItem->getCmsPageId(), $parentItem->getTree());
@@ -57,7 +67,8 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
                                 // loop and reorder items:
                                 foreach($currentChilds as $childIndex => $currentChild) {
                                     $parentItem->removeChild($currentChild);
-                                    if($childIndex == $menuItem->getAddBefore()) {
+                                    $addBeforeValue = $this->formatedItemValue($menuItem->getAddBefore());
+                                    if($childIndex == $addBeforeValue) {
                                         $parentItem->addChild($itemNode);
                                     }
                                     $parentItem->addChild($currentChild);
@@ -82,7 +93,8 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
                             // loop and reorder items:
                             foreach($currentChilds as $childIndex => $currentChild) {
                                 $observer->getMenu()->removeChild($currentChild);
-                                if($childIndex == $menuItem->getAddBefore()) {
+                                $addBeforeValue = $this->formatedItemValue($menuItem->getAddBefore());
+                                if($childIndex == $addBeforeValue) {
                                     $observer->getMenu()->addChild($itemNode);
                                 }
                                 $observer->getMenu()->addChild($currentChild);
@@ -121,6 +133,16 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
             $isActive = true;
         }
         return $isActive;
+    }
+
+    public function formatedItemValue($value)
+    {
+        if(strpos($value, 'c-')!==false) {
+            $result = 'category-node-'.str_replace('c-', '', $value);
+        } else {
+            $result = 'cmsmenu-'.$value;
+        }
+        return $result;
     }
 
 }
