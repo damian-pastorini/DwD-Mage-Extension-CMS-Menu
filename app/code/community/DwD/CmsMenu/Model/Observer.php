@@ -25,6 +25,8 @@ class DwD_CmsMenu_Model_Observer
                 if (!$cmsMenu || ($cmsMenu && !$cmsMenu->getId())) {
                     $cmsMenu = Mage::getModel('dwd_cmsmenu/cmsmenu');
                 }
+                $level = Mage::helper('dwd_cmsmenu')->getTreeLevel($post['child_of']);
+                $cmsMenu->setLevel($level);
                 $cmsMenu->setCmsPageId($pageId);
                 $cmsMenu->setShowInMenu($post['show_in_menu']);
                 $cmsMenu->setChildOf($post['child_of']);
@@ -56,6 +58,7 @@ class DwD_CmsMenu_Model_Observer
             $page->setData('child_of', $cmsMenu->getChildOf());
             $page->setData('add_before', $cmsMenu->getAddBefore());
             $page->setData('menu_item_title', $cmsMenu->getMenuItemTitle());
+            $page->setData('level', $cmsMenu->getLevel());
             return $page;
         }
     }
