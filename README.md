@@ -46,6 +46,10 @@ For support, contact us at <a href="mailto:info@dwdeveloper.com">info@dwdevelope
 
 ## Change log
 
+### v0.1.4
+- Added level field to the cmsmenu table.
+- Fixed child assignment issue.
+
 ### v0.1.3
 - Fixed sort order to avoid child of not showing up issue.
 - Added categories level and status filters for admin select box.
