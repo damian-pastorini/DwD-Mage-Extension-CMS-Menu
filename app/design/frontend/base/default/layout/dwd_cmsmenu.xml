@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/*
+*
+* @category		DwD
+* @package		DwD_Blog
+* @author		DwDesigner - Damian A. Pastorini - admin@dwdesigner.com
+* @copyright	Copyright(c) 2012 DwDesigner (http://www.dwdesigner.com/)
+*
+*/
+-->
+<layout version="0.1.0">
+
+    <default>
+        <reference name="catalog.topnav.renderer">
+            <action ifconfig="dwd_cmsmenu/general/enabled" method="setTemplate">
+                <name>dwd/cmsmenu/page/html/topmenu/renderer.phtml</name>
+            </action>
+        </reference>
+    </default>
+
+</layout>
