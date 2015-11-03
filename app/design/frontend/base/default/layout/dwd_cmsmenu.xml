@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <!--
-/*
-*
-* @category		DwD
-* @package		DwD_Blog
-* @author		DwDesigner - Damian A. Pastorini - admin@dwdesigner.com
-* @copyright	Copyright(c) 2012 DwDesigner (http://www.dwdesigner.com/)
-*
-*/
+/**
+ *
+ * DwD-CmsMenu - Magento Extension
+ *
+ * @copyright Copyright (c) 2015 DwDesigner Inc. (http://www.dwdeveloper.com/)
+ * @author Damian A. Pastorini - damian.pastorini@dwdeveloper.com
+ *
+ */
 -->
 <layout version="0.1.0">
 
