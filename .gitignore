@@ -24,6 +24,7 @@ app/code/community/Phoenix/
 app/code/community/Cm/
 app/code/core/
 app/design/adminhtml/default/default/
+app/design/frontend/base/default/etc/
 app/design/frontend/base/default/layout/authorizenet.xml
 app/design/frontend/base/default/layout/bml.xml
 app/design/frontend/base/default/layout/bundle.xml
