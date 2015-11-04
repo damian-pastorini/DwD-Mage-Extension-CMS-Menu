@@ -16,12 +16,9 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
     {
         $isEnabled = Mage::getStoreConfig('dwd_cmsmenu/general/enabled');
         if($isEnabled) {
+            $topMenu = $observer->getMenu();
             // get all items that should be added at the end of the tree:
-            $cmsMenuItems = Mage::getModel('dwd_cmsmenu/cmsmenu')
-                ->getCollection()
-                ->addActiveFilter()
-                ->setChildOfOrder()
-                ->setAddBeforeOrder();
+            $cmsMenuItems = $this->getCmsMenuItems();
             // loop items and add to the menu:
             foreach ($cmsMenuItems as $menuItem) {
                 // get item name:
@@ -45,7 +42,7 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
                 // child of items:
                 if($menuItem->getChildOf()) {
                     // get all child nodes:
-                    $allChildNodes = $observer->getMenu()->getAllChildNodes();
+                    $allChildNodes = $topMenu->getAllChildNodes();
                     // look for the parent item:
                     $parentItem = false;
                     // get child of value:
@@ -55,59 +52,24 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
                         $parentItem = $allChildNodes[$childOf];
                     }
                     if($parentItem) {
-                        // create new item node:
-                        $itemNode = new Varien_Data_Tree_Node($itemNodeData, 'cmsmenu-'.$menuItem->getCmsPageId(), $parentItem->getTree());
-                        if(!$menuItem->getAddBefore()) {
-                            // add item at the end:
-                            $parentItem->addChild($itemNode);
-                        } else {
-                            // add before case, get parent item childs:
-                            $currentChilds = $parentItem->getChildren();
-                            if($currentChilds) {
-                                // loop and reorder items:
-                                foreach($currentChilds as $childIndex => $currentChild) {
-                                    $parentItem->removeChild($currentChild);
-                                    $addBeforeValue = $this->formatedItemValue($menuItem->getAddBefore());
-                                    if($childIndex == $addBeforeValue) {
-                                        $parentItem->addChild($itemNode);
-                                    }
-                                    $parentItem->addChild($currentChild);
-                                }
-                            } else {
-                                // if there are no childs add the item normally:
-                                $parentItem->addChild($itemNode);
-                            }
-                        }
+                        $this->createAndAssignItemNode($menuItem, $itemNodeData, $parentItem);
                     }
                 } else {
-                    // create new node:
-                    $itemNode = new Varien_Data_Tree_Node($itemNodeData, 'cmsmenu-' . $menuItem->getCmsPageId(), $observer->getMenu()->getTree());
-                    // top level items:
-                    if(!$menuItem->getAddBefore()) {
-                        // add item at the end:
-                        $observer->getMenu()->addChild($itemNode);
-                    } else {
-                        // get menu items:
-                        $currentChilds = $observer->getMenu()->getChildren();
-                        if($currentChilds) {
-                            // loop and reorder items:
-                            foreach($currentChilds as $childIndex => $currentChild) {
-                                $observer->getMenu()->removeChild($currentChild);
-                                $addBeforeValue = $this->formatedItemValue($menuItem->getAddBefore());
-                                if($childIndex == $addBeforeValue) {
-                                    $observer->getMenu()->addChild($itemNode);
-                                }
-                                $observer->getMenu()->addChild($currentChild);
-                            }
-                        } else {
-                            // if there are no items just add the child normally:
-                            $observer->getMenu()->addChild($itemNode);
-                        }
-                    }
+                    $this->createAndAssignItemNode($menuItem, $itemNodeData, $topMenu);
                 }
             }
         }
         return $observer;
+    }
+
+    protected function getCmsMenuItems()
+    {
+        $collection = Mage::getModel('dwd_cmsmenu/cmsmenu')
+            ->getCollection()
+            ->addActiveFilter()
+            ->setChildOfOrder()
+            ->setAddBeforeOrder();
+        return $collection;
     }
 
     public function getItemName($menuItem)
@@ -143,6 +105,34 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
             $result = 'cmsmenu-'.$value;
         }
         return $result;
+    }
+
+    public function createAndAssignItemNode($menuItem, $itemNodeData, $parentMenu)
+    {
+        // create new node:
+        $itemNode = new Varien_Data_Tree_Node($itemNodeData, 'cmsmenu-' . $menuItem->getCmsPageId(), $parentMenu->getTree());
+        // top level items:
+        if(!$menuItem->getAddBefore()) {
+            // add item at the end:
+            $parentMenu->addChild($itemNode);
+        } else {
+            // get menu items:
+            $currentChilds = $parentMenu->getChildren();
+            if($currentChilds) {
+                // loop and reorder items:
+                foreach($currentChilds as $childIndex => $currentChild) {
+                    $parentMenu->removeChild($currentChild);
+                    $addBeforeValue = $this->formatedItemValue($menuItem->getAddBefore());
+                    if($childIndex == $addBeforeValue) {
+                        $parentMenu->addChild($itemNode);
+                    }
+                    $parentMenu->addChild($currentChild);
+                }
+            } else {
+                // if there are no items just add the child normally:
+                $parentMenu->addChild($itemNode);
+            }
+        }
     }
 
 }
