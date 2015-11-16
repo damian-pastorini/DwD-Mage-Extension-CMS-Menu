@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+        <cmsmart_tab translate="label">
+            <label>Cmsmart Megamenu</label>
+            <sort_order>1</sort_order>
+        </cmsmart_tab>
+    </tabs>
+    <sections>
+        <megamenu translate="label">
+			<label>Mega Menu</label>
+			<tab>cmsmart_tab</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>300</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+            <groups>	
+				<cmsmart translate="label">
+                    <label>License</label>                   
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[<p id="license-messages"></p>]]>
+                    <![CDATA[
+                    <h5 style="padding-bottom: 10px; font-family: Arial">Magento Megamenu Extension</h5>
+                   	
+                    <div style="padding-bottom: 10px"><p style="float: left; width: 205px">Version</p><p>1.0.0</p></div>
+                    <div style="padding-bottom: 10px"><p style="float: left; width: 205px">License</p><p>GPL</p></div>
+                    <div><p style="float: left; width: 205px">Copyright</p><p>(c) 2013-2014 Cmsmart.net</p></div>
+                    ]]>  
+                    </comment>
+                    <fields>                    	
+                        <license_skuproduct translate="label comment">
+                            <label>Sku Product</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						    <depends><your_first_field_name>1</your_first_field_name></depends>
+                        </license_skuproduct>     
+                        <license_key translate="label comment">
+                            <label>License</label>
+                            <comment>
+                            <![CDATA[Please fill the license key, more information on <a href="http://cmsmart.net/license" target="_blank" style='text-decoration: none'><font color="#218bca">http://cmsmart.net/license</font></a>]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </license_key>                         
+                    </fields>
+                </cmsmart>
+				<mainmenu translate="label">
+                    <label>Main Menu</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label comment">
+                            <label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </enabled>                    
+						<home translate="label">
+                            <label>Show Home Link</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </home>
+                        <home_color translate="label">
+                            <label>Color Home</label>
+                            <frontend_type>text</frontend_type>
+							<frontend_model>megamenu/adminhtml_system_config_form_field_color</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </home_color>
+                        <home_background translate="label">
+                            <label>Background Home</label>
+                            <frontend_type>text</frontend_type>
+							<frontend_model>megamenu/adminhtml_system_config_form_field_color</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </home_background>
+                        <width_menu translate="label">
+                            <label>Width Menu</label>
+                            <comment>
+								<![CDATA[Ex:950(Width: 950px;)]]>
+							</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </width_menu>
+						<width_thumbnail_category translate="label">
+                            <label>Width thumbnail category</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </width_thumbnail_category>
+                        <height_thumbnail_category translate="label">
+                            <label>Height thumbnail category</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </height_thumbnail_category>
+                       
+                    </fields>    
+                </mainmenu>
+                <info translate="label">
+                    <label>Cmsmart</label>
+                    <sort_order>901</sort_order>
+                    <frontend_type>text</frontend_type> 
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store> 
+                    <comment>Extension powered by <![CDATA[<a href="http://www.cmsmart.net" target="_blank" style='text-decoration: none'><font color="#EF1313">CMSMART</font></a>.<br/><br/>]]>Visit our website: <![CDATA[<a href="http://www.cmsmart.net" target="_blank" style='text-decoration: none'><font color="#EF1313">wwww.cmsmart.net</font></a>]]> to view more themes and extension required for your magento store.<![CDATA[<br/><br/>]]> Write ticket and get support from our at: <![CDATA[<a href="http://cmsmart.net/support" target="_blank" style='text-decoration: none'><font color="#EF1313">Technical Support - Forum</font></a>.]]>  </comment>  
+                </info>
+            </groups>
+        </megamenu>
+    </sections>
+</config>
