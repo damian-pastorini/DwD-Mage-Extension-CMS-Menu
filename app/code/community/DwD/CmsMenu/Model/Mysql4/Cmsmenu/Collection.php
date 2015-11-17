@@ -41,7 +41,7 @@ class DwD_CmsMenu_Model_Mysql4_Cmsmenu_Collection extends Mage_Core_Model_Mysql4
 
     public function addBeforeIdFilter($beforeId)
     {
-        $this->addFieldToFilter('add_before', array('attribute' => 'add_before', 'eq' => $beforeId));
+        $this->addFieldToFilter('add_before', array('attribute' => 'add_before', 'eq' => (string) $beforeId));
         return $this;
     }
 
