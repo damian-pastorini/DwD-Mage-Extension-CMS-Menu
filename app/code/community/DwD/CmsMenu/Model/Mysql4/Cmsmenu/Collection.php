@@ -39,6 +39,12 @@ class DwD_CmsMenu_Model_Mysql4_Cmsmenu_Collection extends Mage_Core_Model_Mysql4
         return $this;
     }
 
+    public function addLevelFilter($level)
+    {
+        $this->addFieldToFilter('level', array('attribute' => 'level', 'eq' => $level));
+        return $this;
+    }
+
     public function setChildOfOrder()
     {
         $this->getSelect()->order('level', self::SORT_ORDER_ASC);
