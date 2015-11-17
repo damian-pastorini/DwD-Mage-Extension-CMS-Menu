@@ -23,7 +23,7 @@ class DwD_CmsMenu_Model_Mysql4_Cmsmenu_Collection extends Mage_Core_Model_Mysql4
         return $this;
     }
 
-    public function addChildOfFilter($childOf=false)
+    public function addChildOfFilter($childOf = false)
     {
         if(!$childOf) {
             $this->addFieldToFilter('child_of', array('attribute' => 'child_of', array('eq'=>'0', 'null'=>true)));
@@ -36,6 +36,12 @@ class DwD_CmsMenu_Model_Mysql4_Cmsmenu_Collection extends Mage_Core_Model_Mysql4
     public function addBeforeFilter($notNull = true)
     {
         $this->addFieldToFilter('add_before', array('attribute' => 'add_before', 'notnull' => $notNull));
+        return $this;
+    }
+
+    public function addBeforeIdFilter($beforeId)
+    {
+        $this->addFieldToFilter('add_before', array('attribute' => 'add_before', 'eq' => $beforeId));
         return $this;
     }
 
