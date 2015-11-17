@@ -33,9 +33,9 @@ class DwD_CmsMenu_Model_Mysql4_Cmsmenu_Collection extends Mage_Core_Model_Mysql4
         return $this;
     }
 
-    public function addBeforeFilter()
+    public function addBeforeFilter($notNull = true)
     {
-        $this->addFieldToFilter('add_before', array('attribute' => 'add_before', 'notnull' => true));
+        $this->addFieldToFilter('add_before', array('attribute' => 'add_before', 'notnull' => $notNull));
         return $this;
     }
 
