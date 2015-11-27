@@ -36,6 +36,8 @@ class DwD_CmsMenu_Model_Observer
                     $itemTitle = $post['title'];
                 }
                 $cmsMenu->setMenuItemTitle($itemTitle);
+                $observerDataArray = array_merge($observer->getData(), array('cmsmenu'=>$cmsMenu, 'post'=>$post));
+                Mage::dispatchEvent('cmsmenu_save_item_before', $observerDataArray);
                 $cmsMenu->save();
                 $flushCache = Mage::getStoreConfig('dwd_cmsmenu/general/cache');
                 if($flushCache) {
@@ -44,6 +46,7 @@ class DwD_CmsMenu_Model_Observer
             } catch (Exception $e) {
                 Mage::log($e->getMessage(), null, 'dwd-cmsmenu-error.log');
             }
+            Mage::dispatchEvent('cmsmenu_save_item_after', $observer->getData());
         }
     }
 
@@ -59,6 +62,8 @@ class DwD_CmsMenu_Model_Observer
             $page->setData('add_before', $cmsMenu->getAddBefore());
             $page->setData('menu_item_title', $cmsMenu->getMenuItemTitle());
             $page->setData('level', $cmsMenu->getLevel());
+            $observerDataArray = array_merge($observer->getData(), array('page'=>$page, 'cmsmenu'=>$cmsMenu));
+            Mage::dispatchEvent('cmsmenu_add_cms_page_data_after', $observerDataArray);
             return $page;
         }
     }

@@ -45,6 +45,7 @@ class DwD_CmsMenu_Block_Adminhtml_Cms_Page_Edit_Tab_Content extends Mage_Adminht
                 'values' => $fathersList,
                 'note' => Mage::helper('cms')->__('If empty the item will be added as last. If you have multiple items without this value those will be added at the end ordered by the identifier.'),
             ));
+            Mage::dispatchEvent('cmsmenu_add_form_items_after', $observer->getData());
         }
     }
 
