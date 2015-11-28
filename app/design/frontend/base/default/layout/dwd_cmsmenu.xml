@@ -13,7 +13,7 @@
 
     <default>
         <reference name="catalog.topnav.renderer">
-            <action ifconfig="dwd_cmsmenu/general/enabled" method="setTemplate">
+            <action ifconfig="dwd_cmsmenu/general/show_view_all" method="setTemplate">
                 <name>dwd/cmsmenu/page/html/topmenu/renderer.phtml</name>
             </action>
         </reference>
