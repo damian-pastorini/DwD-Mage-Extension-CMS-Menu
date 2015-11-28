@@ -15,6 +15,7 @@ $installer->startSetup();
 
 // cmsmenu table:
 $table = $this->getTable('dwd_cmsmenu/cmsmenu');
+
 // cms pages table:
 $tableCmsPages = $this->getTable('cms/page');
 
