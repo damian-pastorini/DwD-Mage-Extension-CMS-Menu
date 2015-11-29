@@ -18,9 +18,14 @@ $table = $this->getTable('dwd_cmsmenu/cmsmenu');
 
 // cms pages table:
 $tableCmsPages = $this->getTable('cms/page');
+Mage::log($tableCmsPages, null, 'dwd-cmsmenu-error.log', true);
 
-// run query:
+// remove old foreign key:
 $installer->run("ALTER TABLE {$table} DROP FOREIGN KEY `FK_cmsmenu_cms_page`;");
+Mage::log("ALTER TABLE {$table} DROP FOREIGN KEY `FK_cmsmenu_cms_page`;", null, 'dwd-cmsmenu-error.log', true);
+
+// add fixed foreign key:
 $installer->run("ALTER TABLE {$table} ADD CONSTRAINT `FK_cmsmenu_cms_page` FOREIGN KEY (`cms_page_id`) REFERENCES {$tableCmsPages} (`page_id`);");
+Mage::log("ALTER TABLE {$table} ADD CONSTRAINT `FK_cmsmenu_cms_page` FOREIGN KEY (`cms_page_id`) REFERENCES {$tableCmsPages} (`page_id`);", null, 'dwd-cmsmenu-error.log', true);
 
 $installer->endSetup();
