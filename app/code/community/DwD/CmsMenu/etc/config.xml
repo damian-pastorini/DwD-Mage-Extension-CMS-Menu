@@ -12,7 +12,7 @@
 <config>
     <modules>
         <DwD_CmsMenu>
-            <version>0.1.4</version>
+            <version>0.1.5</version>
         </DwD_CmsMenu>
     </modules>
     <global>
@@ -79,6 +79,7 @@
             <general>
                 <enabled>1</enabled>
                 <cache>1</cache>
+                <show_view_all>0</show_view_all>
             </general>
         </dwd_cmsmenu>
     </default>
@@ -93,6 +94,13 @@
                 </observers>
             </page_block_html_topmenu_gethtml_before>
         </events>
+        <layout>
+            <updates>
+                <dwd_cmsmenu>
+                    <file>dwd_cmsmenu.xml</file>
+                </dwd_cmsmenu>
+            </updates>
+        </layout>
     </frontend>
     <adminhtml>
         <events>

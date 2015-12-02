@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * DwD-CmsMenu - Magento Extension
+ *
+ * @copyright Copyright (c) 2015 DwDesigner Inc. (http://www.dwdeveloper.com/)
+ * @author Damian A. Pastorini - damian.pastorini@dwdeveloper.com
+ *
+ */
+-->
+<layout version="0.1.0">
+
+    <default>
+        <reference name="catalog.topnav.renderer">
+            <action ifconfig="dwd_cmsmenu/general/show_view_all" method="setTemplate">
+                <name>dwd/cmsmenu/page/html/topmenu/renderer.phtml</name>
+            </action>
+        </reference>
+    </default>
+
+</layout>
