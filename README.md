@@ -46,6 +46,11 @@ For support, contact us at <a href="mailto:info@dwdeveloper.com">info@dwdevelope
 
 ## Change log
 
+### v0.1.5
+- Fixed tables creation for implementations with tables prefix.
+- Added the option to disable the "View All" link.
+- Added custom events for 3rd party integrations.
+
 ### v0.1.4
 - Added level field to the cmsmenu table.
 - Fixed child assignment issue.
