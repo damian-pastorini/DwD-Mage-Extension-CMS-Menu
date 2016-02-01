@@ -21,10 +21,16 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
             $cmsMenuItems = $this->getCmsMenuItems();
             // loop items and add to the menu:
             foreach ($cmsMenuItems as $menuItem) {
+                // load cms page information:
+                $menuItem->loadCmsPageObject();
+                // check if the cms page is available for the store:
+                if(!$menuItem->getCmsPage()) {
+                    continue;
+                }
                 // get item name:
                 $itemName = $this->getItemName($menuItem);
                 // get item url:
-                $itemUrl = Mage::helper('cms/page')->getPageUrl($menuItem->getCmsPageId());
+                $itemUrl = $menuItem->getPageUrl();
                 // check if the item is active:
                 $is_active = $this->getItemStatus($itemUrl);
                 // create the item data array:
@@ -77,8 +83,10 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
         $itemName = $menuItem->getMenuItemTitle();
         if(!$itemName) {
             // if the item title is not specified then get the title from the page:
-            $cmsPage = Mage::getModel('cms/page')->load($menuItem->getCmsPageId());
-            $itemName = $cmsPage->getTitle();
+            $cmsPage = $menuItem->getCmsPage();
+            if($cmsPage && $cmsPage->getTitle()) {
+                $itemName = $cmsPage->getTitle();
+            }
         }
         return $itemName;
     }
