@@ -12,6 +12,9 @@
 class DwD_CmsMenu_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
+    /**
+     * @return array
+     */
     public function getFathersList()
     {
         // options:
@@ -44,6 +47,12 @@ class DwD_CmsMenu_Helper_Data extends Mage_Core_Helper_Abstract
         return $options;
     }
 
+    /**
+     * @param $childOf
+     * @param int $level
+     * @param bool $recursive
+     * @return int
+     */
     public function getTreeLevel($childOf, $level = 0, $recursive = false)
     {
         if($childOf) {

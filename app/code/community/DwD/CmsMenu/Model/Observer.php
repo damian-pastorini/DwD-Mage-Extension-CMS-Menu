@@ -12,6 +12,9 @@
 class DwD_CmsMenu_Model_Observer
 {
 
+    /**
+     * @param $observer
+     */
     public function saveCmsMenu($observer)
     {
         $isEnabled = Mage::getStoreConfig('dwd_cmsmenu/general/enabled');
@@ -50,6 +53,10 @@ class DwD_CmsMenu_Model_Observer
         }
     }
 
+    /**
+     * @param $observer
+     * @return mixed
+     */
     public function addCmsPageData($observer)
     {
         $isEnabled = Mage::getStoreConfig('dwd_cmsmenu/general/enabled');

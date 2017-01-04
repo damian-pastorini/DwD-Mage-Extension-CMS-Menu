@@ -12,6 +12,9 @@
 class DwD_CmsMenu_Block_Adminhtml_Cms_Page_Edit_Tab_Content extends Mage_Adminhtml_Block_Widget_Form
 {
 
+    /**
+     * @param $observer
+     */
     public function prepareForm($observer)
     {
         $isEnabled = Mage::getStoreConfig('dwd_cmsmenu/general/enabled');

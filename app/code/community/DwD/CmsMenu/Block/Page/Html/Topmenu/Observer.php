@@ -12,6 +12,10 @@
 class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_Topmenu
 {
 
+    /**
+     * @param $observer
+     * @return mixed
+     */
     public function addMenuItems($observer)
     {
         $isEnabled = Mage::getStoreConfig('dwd_cmsmenu/general/enabled');
@@ -41,8 +45,6 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
                     'url' => $itemUrl,
                     'is_active' => $is_active,
                     'level' => 0,
-                    'is_first' => false, // TODO: fix.
-                    'is_last' => false, // TODO: fix.
                     'class' => 'cmsmenu-'.$menuItem->getCmsPageId()
                 );
                 // child of items:
@@ -68,6 +70,9 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
         return $observer;
     }
 
+    /**
+     * @return mixed
+     */
     protected function getCmsMenuItems()
     {
         $collection = Mage::getModel('dwd_cmsmenu/cmsmenu')
@@ -78,6 +83,10 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
         return $collection;
     }
 
+    /**
+     * @param $menuItem
+     * @return mixed
+     */
     public function getItemName($menuItem)
     {
         $itemName = $menuItem->getMenuItemTitle();
@@ -91,6 +100,10 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
         return $itemName;
     }
 
+    /**
+     * @param $itemUrl
+     * @return bool
+     */
     public function getItemStatus($itemUrl)
     {
         $isActive = false;
@@ -105,6 +118,10 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
         return $isActive;
     }
 
+    /**
+     * @param $value
+     * @return string
+     */
     public function formatedItemValue($value)
     {
         if(strpos($value, 'c-')!==false) {
@@ -115,6 +132,11 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
         return $result;
     }
 
+    /**
+     * @param $menuItem
+     * @param $itemNodeData
+     * @param $parentMenu
+     */
     public function createAndAssignItemNode($menuItem, $itemNodeData, $parentMenu)
     {
         // create new node:

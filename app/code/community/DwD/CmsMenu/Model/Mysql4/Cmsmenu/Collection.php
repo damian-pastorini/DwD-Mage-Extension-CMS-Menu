@@ -17,12 +17,19 @@ class DwD_CmsMenu_Model_Mysql4_Cmsmenu_Collection extends Mage_Core_Model_Mysql4
         $this->_init('dwd_cmsmenu/cmsmenu');
     }
 
+    /**
+     * @return $this
+     */
     public function addActiveFilter()
     {
         $this->addFieldToFilter('show_in_menu', array('attribute' => 'show_in_menu', 'eq' => 1));
         return $this;
     }
 
+    /**
+     * @param bool $childOf
+     * @return $this
+     */
     public function addChildOfFilter($childOf = false)
     {
         if(!$childOf) {
@@ -33,24 +40,39 @@ class DwD_CmsMenu_Model_Mysql4_Cmsmenu_Collection extends Mage_Core_Model_Mysql4
         return $this;
     }
 
+    /**
+     * @param bool $notNull
+     * @return $this
+     */
     public function addBeforeFilter($notNull = true)
     {
         $this->addFieldToFilter('add_before', array('attribute' => 'add_before', 'notnull' => $notNull));
         return $this;
     }
 
+    /**
+     * @param $beforeId
+     * @return $this
+     */
     public function addBeforeIdFilter($beforeId)
     {
         $this->addFieldToFilter('add_before', array('attribute' => 'add_before', 'eq' => (string) $beforeId));
         return $this;
     }
 
+    /**
+     * @param $level
+     * @return $this
+     */
     public function addLevelFilter($level)
     {
         $this->addFieldToFilter('level', array('attribute' => 'level', 'eq' => $level));
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function setChildOfOrder()
     {
         $this->getSelect()->order('level', self::SORT_ORDER_ASC);
@@ -59,6 +81,9 @@ class DwD_CmsMenu_Model_Mysql4_Cmsmenu_Collection extends Mage_Core_Model_Mysql4
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function setAddBeforeOrder()
     {
         $this->getSelect()->order(new Zend_Db_Expr('add_before+0'), self::SORT_ORDER_ASC);

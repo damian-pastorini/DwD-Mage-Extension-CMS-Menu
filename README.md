@@ -46,6 +46,10 @@ For support, contact us at <a href="mailto:info@dwdeveloper.com">info@dwdevelope
 
 ## Change log
 
+### v0.1.6
+- Minor fixes.
+- Included in Marketplace.
+
 ### v0.1.5
 - Fixed tables creation for implementations with tables prefix.
 - Added the option to disable the "View All" link.

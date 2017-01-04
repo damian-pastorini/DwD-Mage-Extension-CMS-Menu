@@ -19,6 +19,9 @@ class DwD_CmsMenu_Model_Cmsmenu extends Mage_Core_Model_Abstract
         $this->_init('dwd_cmsmenu/cmsmenu');
     }
 
+    /**
+     * @return null
+     */
     public function loadCmsPageObject()
     {
         $page = Mage::getModel('cms/page');
@@ -35,13 +38,18 @@ class DwD_CmsMenu_Model_Cmsmenu extends Mage_Core_Model_Abstract
         $this->pageObject = $page;
     }
 
+    /**
+     * @return mixed
+     */
     public function getCmsPage()
     {
         return $this->pageObject;
     }
 
     /**
-     * Retrieve page direct URL
+     *
+     * Retrieve page direct URL.
+     *
      * @return string
      */
     public function getPageUrl()
