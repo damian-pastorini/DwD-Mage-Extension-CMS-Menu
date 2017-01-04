@@ -1,0 +1,18 @@
+{
+  "name": "damian-pastorini/DwD-Mage-Extension-CMS-Menu",
+  "license": "AFL-3.0",
+  "type": "magento-module",
+  "description": "Magento CMS Menu: include and manage CMS pages links in the top navigation.",
+  "homepage": "https://github.com/damian-pastorini/DwD-Mage-Extension-CMS-Menu",
+  "require": {
+    "php": ">=5.3",
+    "magento-hackathon/magento-composer-installer": "*"
+  },
+  "authors": [
+    {
+      "name": "Damian Pastorini",
+      "email": "damian.pastorini@dwdeveloper.com",
+      "role": "Author/Maintainer"
+    }
+  ]
+}
