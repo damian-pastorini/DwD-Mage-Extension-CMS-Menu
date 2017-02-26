@@ -47,7 +47,7 @@ For support, contact us at <a href="mailto:info@dwdeveloper.com">info@dwdevelope
 ## Change log
 
 ### v0.1.7
-- Replaced feature "Show View All" by "Hide View All". 
+- Replaced feature "Show View All" by "Hide View All".
 - Included in Marketplace.
 
 ### v0.1.6
