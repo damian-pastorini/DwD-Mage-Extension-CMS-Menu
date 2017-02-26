@@ -13,11 +13,19 @@ class DwD_CmsMenu_Model_Observer
 {
 
     /**
+     * @return mixed
+     */
+    public function isEnabled()
+    {
+        return Mage::getStoreConfig('dwd_cmsmenu/general/enabled');
+    }
+
+    /**
      * @param $observer
      */
     public function saveCmsMenu($observer)
     {
-        $isEnabled = Mage::getStoreConfig('dwd_cmsmenu/general/enabled');
+        $isEnabled = $this->isEnabled();
         if($isEnabled) {
             try {
                 $request = Mage::app()->getRequest();
@@ -59,7 +67,7 @@ class DwD_CmsMenu_Model_Observer
      */
     public function addCmsPageData($observer)
     {
-        $isEnabled = Mage::getStoreConfig('dwd_cmsmenu/general/enabled');
+        $isEnabled = $this->isEnabled();
         if($isEnabled) {
             $page = $observer->getObject();
             $pageId = $page->getId();
@@ -71,6 +79,25 @@ class DwD_CmsMenu_Model_Observer
             $page->setData('level', $cmsMenu->getLevel());
             $observerDataArray = array_merge($observer->getData(), array('page'=>$page, 'cmsmenu'=>$cmsMenu));
             Mage::dispatchEvent('cmsmenu_add_cms_page_data_after', $observerDataArray);
+            return $page;
+        }
+    }
+
+    /**
+     * @param $observer
+     * @return mixed
+     */
+    public function deleteCmsMenu($observer)
+    {
+        $isEnabled = $this->isEnabled();
+        if($isEnabled) {
+            $page = $observer->getObject();
+            $pageId = $page->getId();
+            $cmsMenu = Mage::getModel('dwd_cmsmenu/cmsmenu')->load($pageId, 'cms_page_id');
+            if($cmsMenu->getId()) {
+                $cmsMenu->delete();
+            }
+            Mage::dispatchEvent('cmsmenu_delete_item_after', $observer->getData());
             return $page;
         }
     }

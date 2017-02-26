@@ -12,7 +12,7 @@
 <config>
     <modules>
         <DwD_CmsMenu>
-            <version>0.1.7</version>
+            <version>0.1.8</version>
         </DwD_CmsMenu>
     </modules>
     <global>
@@ -121,6 +121,14 @@
                     </dwd_cmsmenu_save_cmsmenu>
                 </observers>
             </cms_page_save_after>
+            <cms_page_delete_before>
+                <observers>
+                    <dwd_cmsmenu_save_cmsmenu>
+                        <class>DwD_CmsMenu_Model_Observer</class>
+                        <method>deleteCmsMenu</method>
+                    </dwd_cmsmenu_save_cmsmenu>
+                </observers>
+            </cms_page_delete_before>
         </events>
     </adminhtml>
 </config>
