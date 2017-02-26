@@ -11,8 +11,10 @@ lib/Mage/
 lib/Magento/
 lib/Net/
 lib/PEAR/
+lib/Pear/
 lib/Pelago/
 lib/phpseclib/
+lib/Unserialize
 lib/Varien/
 lib/Zend/
 .htaccess

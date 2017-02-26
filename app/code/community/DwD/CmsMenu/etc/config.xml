@@ -79,7 +79,7 @@
             <general>
                 <enabled>1</enabled>
                 <cache>1</cache>
-                <show_view_all>0</show_view_all>
+                <hide_view_all>1</hide_view_all>
             </general>
         </dwd_cmsmenu>
     </default>
