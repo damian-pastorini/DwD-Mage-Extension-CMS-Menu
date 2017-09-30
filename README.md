@@ -46,6 +46,10 @@ For support, contact us at <a href="mailto:info@dwdeveloper.com">info@dwdevelope
 
 ## Change log
 
+### v0.1.9
+- Code refactor.
+- Unit test friendly.
+
 ### v0.1.8
 - Fixed delete action.
 - Included in Marketplace.

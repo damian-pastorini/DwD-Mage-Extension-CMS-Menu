@@ -4,7 +4,7 @@
  *
  * DwD-CmsMenu - Magento Extension
  *
- * @copyright Copyright (c) 2015 DwDesigner Inc. (http://www.dwdeveloper.com/)
+ * @copyright Copyright (c) 2017 DwDeveloper (http://www.dwdeveloper.com/)
  * @author Damian A. Pastorini - damian.pastorini@dwdeveloper.com
  *
  */
@@ -18,7 +18,7 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
      */
     public function addMenuItems($observer)
     {
-        $isEnabled = Mage::getStoreConfig('dwd_cmsmenu/general/enabled');
+        $isEnabled = $this->getConfig('dwd_cmsmenu/general/enabled');
         if($isEnabled) {
             $topMenu = $observer->getMenu();
             // get all items that should be added at the end of the tree:
@@ -75,7 +75,7 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
      */
     protected function getCmsMenuItems()
     {
-        $collection = Mage::getModel('dwd_cmsmenu/cmsmenu')
+        $collection = $this->getCmsMenuModel()
             ->getCollection()
             ->addActiveFilter()
             ->setChildOfOrder()
@@ -108,7 +108,7 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
     {
         $isActive = false;
         // get current url:
-        $currentUrl = rtrim(Mage::helper('core/url')->getCurrentUrl(), '/');
+        $currentUrl = rtrim($this->getUrlHelper()->getCurrentUrl(), '/');
         // get item url:
         $currentPageUrl = rtrim($itemUrl, '/');
         // validate:
@@ -140,7 +140,7 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
     public function createAndAssignItemNode($menuItem, $itemNodeData, $parentMenu)
     {
         // create new node:
-        $itemNode = new Varien_Data_Tree_Node($itemNodeData, 'cmsmenu-' . $menuItem->getCmsPageId(), $parentMenu->getTree());
+        $itemNode = $this->createItemNode($itemNodeData, 'cmsmenu-' . $menuItem->getCmsPageId(), $parentMenu->getTree());
         // top level items:
         if(!$menuItem->getAddBefore()) {
             // add item at the end:
@@ -163,6 +163,42 @@ class DwD_CmsMenu_Block_Page_Html_Topmenu_Observer extends Mage_Page_Block_Html_
                 $parentMenu->addChild($itemNode);
             }
         }
+    }
+
+    /**
+     * @param $data
+     * @param $name
+     * @param $parentTree
+     * @return Varien_Data_Tree_Node
+     */
+    public function createItemNode($data, $name, $parentTree)
+    {
+        return new Varien_Data_Tree_Node($data, $name, $parentTree);
+    }
+
+    /**
+     * @param $path
+     * @return mixed
+     */
+    public function getConfig($path)
+    {
+        return Mage::getStoreConfig($path);
+    }
+
+    /**
+     * @return false|Mage_Core_Model_Abstract
+     */
+    protected function getCmsMenuModel()
+    {
+        return Mage::getModel('dwd_cmsmenu/cmsmenu');
+    }
+
+    /**
+     * @return Mage_Core_Helper_Abstract
+     */
+    protected function getUrlHelper()
+    {
+        return Mage::helper('core/url');
     }
 
 }

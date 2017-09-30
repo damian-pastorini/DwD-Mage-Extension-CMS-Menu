@@ -4,7 +4,7 @@
  *
  * DwD-CmsMenu - Magento Extension
  *
- * @copyright Copyright (c) 2015 DwDesigner Inc. (http://www.dwdeveloper.com/)
+ * @copyright Copyright (c) 2017 DwDeveloper (http://www.dwdeveloper.com/)
  * @author Damian A. Pastorini - damian.pastorini@dwdeveloper.com
  *
  */
@@ -12,6 +12,9 @@
 class DwD_CmsMenu_Model_Mysql4_Cmsmenu_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
 {
 
+    /**
+     * Constructor.
+     */
     public function _construct()
     {
         $this->_init('dwd_cmsmenu/cmsmenu');
@@ -76,7 +79,7 @@ class DwD_CmsMenu_Model_Mysql4_Cmsmenu_Collection extends Mage_Core_Model_Mysql4
     public function setChildOfOrder()
     {
         $this->getSelect()->order('level', self::SORT_ORDER_ASC);
-        $this->getSelect()->order(new Zend_Db_Expr('child_of+0'), self::SORT_ORDER_ASC);
+        $this->getSelect()->order($this->getExpression('child_of+0'), self::SORT_ORDER_ASC);
         $this->getSelect()->order('child_of', self::SORT_ORDER_ASC);
         return $this;
     }
@@ -86,9 +89,18 @@ class DwD_CmsMenu_Model_Mysql4_Cmsmenu_Collection extends Mage_Core_Model_Mysql4
      */
     public function setAddBeforeOrder()
     {
-        $this->getSelect()->order(new Zend_Db_Expr('add_before+0'), self::SORT_ORDER_ASC);
+        $this->getSelect()->order($this->getExpression('add_before+0'), self::SORT_ORDER_ASC);
         $this->getSelect()->order('add_before', self::SORT_ORDER_ASC);
         return $this;
+    }
+
+    /**
+     * @param $expression
+     * @return Zend_Db_Expr
+     */
+    public function getExpression($expression)
+    {
+        return new Zend_Db_Expr($expression);
     }
 
 }
