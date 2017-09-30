@@ -61,7 +61,7 @@ foreach ($children as $child) {
 
     if (!empty($_hasChildren)) {
         $html .= '<ul class="level'. $childLevel .'">';
-        if(!Mage::getStoreConfig('dwd_cmsmenu/general/hide_view_all')) {
+        if(!$this->helper('dwd_cmsmenu')->getConfig('dwd_cmsmenu/general/hide_view_all')) {
             $html .=     '<li class="level'. $nextChildLevel .' view-all">';
             $html .=         '<a class="level'. $nextChildLevel .'" href="'. $child->getUrl() .'">';
             $html .=             $this->__('View All') . ' ' . $this->escapeHtml($this->__($child->getName()));
