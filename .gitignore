@@ -9,6 +9,7 @@ lib/flex/
 lib/LinLibertineFont/
 lib/Mage/
 lib/Magento/
+lib/mcryptcompat/
 lib/Net/
 lib/PEAR/
 lib/Pear/
