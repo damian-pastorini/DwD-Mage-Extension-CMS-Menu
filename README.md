@@ -1,5 +1,10 @@
 # DwD - Magento Extension - CMS Menu
 
+## END OF LIFE
+This FREE extension for Magento 1.x will be no longer maintained and no more support will be provided on the ticketing system or via email. You may still use it, fork it, etc, as usual – of course at your own risk. 
+
+Thanks to the many thousands of merchants who used the extension over the years!
+
 ## About the extension:
 
 DwD - CMS Menu allows you to include CMS pages links and set them in any order in the top navigation. With this extension you can easily add a CMS page in the top navigation by using the new options added in the CMS page edition form. You wil find options to include the page in the menu, specify if the link should be displayed as child of any other menu item, and specify the order by telling before which item the link should be displayed. In the background, the extension will create a new table to save the pages menu configuration and include the links with an observer so you can enable / disable the extension withot involve any other Magento feature.
@@ -40,43 +45,3 @@ Administrator User: demo.admin
 
 Administrator Password: demo123
 
-##Support
-
-For support, contact us at <a href="mailto:info@dwdeveloper.com">info@dwdeveloper.com</a>
-
-## Change log
-
-### v0.1.9
-- Code refactor.
-- Unit test friendly.
-
-### v0.1.8
-- Fixed delete action.
-- Included in Marketplace.
-
-### v0.1.7
-- Replaced feature "Show View All" by "Hide View All".
-- Included in Marketplace.
-
-### v0.1.6
-- Minor fixes.
-- Included in Marketplace.
-
-### v0.1.5
-- Fixed tables creation for implementations with tables prefix.
-- Added the option to disable the "View All" link.
-- Added custom events for 3rd party integrations.
-
-### v0.1.4
-- Added level field to the cmsmenu table.
-- Fixed child assignment issue.
-
-### v0.1.3
-- Fixed sort order to avoid child of not showing up issue.
-- Added categories level and status filters for admin select box.
-- Added setup script to fix old items created.
-
-### v0.1.2
-- Fixed setup scripts.
-- Fixed case issues in configuration.
-- Added automatic cache flush feature.
